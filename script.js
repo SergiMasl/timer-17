@@ -1,3 +1,4 @@
+let news = document.querySelector('.news')
 
 const timeBeforNY = (new Date(2022, 0 , 1).getTime() - (new Date().getTime())) / 1000;
 const daysBeforNY = Math.floor((timeBeforNY / 60 / 60 / 24) % 364);
@@ -26,10 +27,18 @@ if (hoursNow > 6 &&  hoursNow < 12){
 	partOfDay = 'Доброй ночи'
 }
 
+function appendNode(arg) {
+  let newDiv = document.createElement('div');
+  newDiv.setAttribute("class", 'news');
+  newDiv.textContent = arg;
+  news.appendChild(newDiv);
 
-console.log(`Добрый ${partOfDay}
-Сегодня: ${days[dayNow]}
-Текущее время:${new Date().toLocaleTimeString('en')}
-До нового года осталось ${daysBeforNY} дней`);
+}
+appendNode(partOfDay);
+appendNode(`Сегодня: ${days[dayNow]}`);
+appendNode(`Текущее время:${new Date().toLocaleTimeString('en')}`);
+appendNode(`До нового года осталось ${daysBeforNY} дней`);
+
+
 
 
